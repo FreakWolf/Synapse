@@ -2,7 +2,7 @@
 
 ## Design
 
-The design for this screen can be found on Figma: [Synapse](https://www.figma.com/design/fPA0UbblWclAknMCnvKnW3/Synapse?node-id=0-1&node-type=canvas&t=KnCuRpGdlgrcJ81B-0){:target="_blank"}
+The design for this screen can be found on Figma: Click [here](https://www.geeksforgeeks.org/){:target="_blank"} 
 
 ## Notes
 
