@@ -2,8 +2,11 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from '@react-navigation/native';
 
 export default function Onboarding() {
+  const navigation = useNavigation();
+
   return (
     <LinearGradient colors={["#000000", "#4b0082"]} style={styles.background}>
       <View style={styles.container}>
@@ -47,7 +50,10 @@ export default function Onboarding() {
           <Text style={styles.orText}>OR</Text>
           <View style={styles.divider} />
         </View>
-        <TouchableOpacity style={styles.signUpButton}>
+        <TouchableOpacity
+          style={styles.signUpButton}
+          onPress={() => navigation.navigate("SignUp")}
+        >
           <Text style={styles.signUpButtonText}>Sign Up with mail</Text>
         </TouchableOpacity>
         <Text style={styles.footerText}>
