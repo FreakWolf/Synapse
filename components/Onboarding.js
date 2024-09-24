@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Onboarding() {
   const navigation = useNavigation();
@@ -24,23 +24,17 @@ export default function Onboarding() {
         </Text>
         <View style={styles.socialButtons}>
           <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity
-              style={[styles.socialButton, { backgroundColor: "#1877F2" }]}
-            >
-              <FontAwesome name="facebook-f" size={24} color="white" />
+            <TouchableOpacity style={styles.socialButton}>
+              <FontAwesome name="facebook" size={24} color="#1877F2" />
             </TouchableOpacity>
-          </View>
-          <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity
-              style={[styles.socialButton, { backgroundColor: "#DB84437" }]}
-            >
-              <FontAwesome name="google" size={24} color="white" />
+            </View>
+            <View style={styles.socialButtonsContainer}>
+            <TouchableOpacity style={styles.socialButton}>
+              <FontAwesome name="google" size={24} color="#DB4437" />
             </TouchableOpacity>
-          </View>
-          <View style={styles.socialButtonsContainer}>
-            <TouchableOpacity
-              style={[styles.socialButton, { backgroundColor: "#000000" }]}
-            >
+            </View>
+            <View style={styles.socialButtonsContainer}>
+            <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="apple" size={24} color="white" />
             </TouchableOpacity>
           </View>
@@ -57,7 +51,14 @@ export default function Onboarding() {
           <Text style={styles.signUpButtonText}>Sign Up with mail</Text>
         </TouchableOpacity>
         <Text style={styles.footerText}>
-          Existing Acconunt? <Text style={styles.loginText}>Log In</Text>
+          Existing Acconunt?{" "}
+          <TouchableOpacity onPress={() => navigation.navigate("LogIn")}>
+            <Text
+              style={[styles.loginText, { textDecorationLine: "underline" }]}
+            >
+              Log In
+            </Text>
+          </TouchableOpacity>
         </Text>
       </View>
     </LinearGradient>
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     width: 55,
     height: 55,
     borderRadius: 35,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: "white",
     justifyContent: "center",
     alignItems: "center",

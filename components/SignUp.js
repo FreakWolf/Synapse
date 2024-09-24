@@ -29,23 +29,19 @@ export default function SignUp() {
       <TextInput
         style={styles.input}
         placeholder="Your Name"
-        placeholderTextColor="#008080"
       />
       <TextInput
         style={styles.input}
         placeholder="Your Email"
-        placeholderTextColor="#008080"
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
-        placeholderTextColor="#008080"
         secureTextEntry
       />
       <TextInput
         style={styles.input}
         placeholder="Confirm Password"
-        placeholderTextColor="#008080"
         secureTextEntry
       />
       <TouchableOpacity style={styles.button}>
@@ -85,10 +81,9 @@ const styles = StyleSheet.create({
   input: {
     width: "100%",
     borderBottomWidth: 1,
-    borderBottomColor: "#d3d3d3",
+    borderBottomColor: "#D1D5DB",
     paddingVertical: 10,
     marginBottom: 20,
-    color: "#008080",
   },
   button: {
     width: "100%",
