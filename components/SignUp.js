@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,9 +8,43 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { auth } from "../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignUp() {
   const navigation = useNavigation();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSignUp = async () => {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      // console.log("User signed up successfully!", userCredential);
+      navigation.navigate("Onboarding");
+    } catch (error) {
+      if (error.code === "auth/network-request-failed") {
+        alert(
+          "Error: Network request failed. Please check your internet connection and try again."
+        );
+      } else {
+        // console.error("error signing up", error);
+        alert("Error signing up. Please try again.");
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -29,22 +63,30 @@ export default function SignUp() {
       <TextInput
         style={styles.input}
         placeholder="Your Name"
+        value={name}
+        onChangeText={(text) => setName(text)}
       />
       <TextInput
         style={styles.input}
         placeholder="Your Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
       />
       <TextInput
         style={styles.input}
         placeholder="Password"
         secureTextEntry
+        value={password}
+        onChangeText={(text) => setPassword(text)}
       />
       <TextInput
         style={styles.input}
         placeholder="Confirm Password"
         secureTextEntry
+        value={confirmPassword}
+        onChangeText={(text) => setConfirmPassword(text)}
       />
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Create an account</Text>
       </TouchableOpacity>
     </View>

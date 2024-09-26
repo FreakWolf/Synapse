@@ -27,13 +27,13 @@ export default function Onboarding() {
             <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="facebook" size={24} color="#1877F2" />
             </TouchableOpacity>
-            </View>
-            <View style={styles.socialButtonsContainer}>
+          </View>
+          <View style={styles.socialButtonsContainer}>
             <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="google" size={24} color="#DB4437" />
             </TouchableOpacity>
-            </View>
-            <View style={styles.socialButtonsContainer}>
+          </View>
+          <View style={styles.socialButtonsContainer}>
             <TouchableOpacity style={styles.socialButton}>
               <FontAwesome name="apple" size={24} color="white" />
             </TouchableOpacity>
