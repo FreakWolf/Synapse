@@ -2,6 +2,14 @@
   "expo": {
     "name": "Synapse",
     "slug": "Synapse",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "extra": {
+      "eas": {
+        "projectId": "c6c71694-7442-499f-801c-f4832fba75c9"
+      }
+    },
+    "android": {
+      "package": "com.singh_wolf.Synapse"
+    }
   }
 }

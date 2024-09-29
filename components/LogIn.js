@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,9 +8,35 @@ import {
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LogIn() {
   const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      navigation.navigate("Onboarding");
+    } catch (error) {
+      if (error.code === "auth/invalid-credential") {
+        setError(
+          "Invalid credentials"
+        );
+        console.error(error);
+      } else {
+        // setError(error.message);
+        // console.error(error);
+      }
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -48,11 +74,24 @@ export default function LogIn() {
         <Text style={styles.orText}>OR</Text>
         <View style={styles.divider} />
       </View>
-      <TextInput style={styles.input} placeholder="Your Email" />
-      <TextInput style={styles.input} placeholder="Password" secureTextEntry />
-      <TouchableOpacity style={styles.loginButton}>
+      <TextInput
+        style={styles.input}
+        placeholder="Your Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={(text) => setPassword(text)}
+      />
+      <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
         <Text style={styles.loginButtonText}>Log In</Text>
       </TouchableOpacity>
+      {error && <Text style={{ color: "red", marginBottom: 20 }}>{error}</Text>}
+
       <TouchableOpacity>
         <Text style={styles.forgotPassword}>Forgot Password?</Text>
       </TouchableOpacity>
