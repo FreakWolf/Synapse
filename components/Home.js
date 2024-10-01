@@ -240,7 +240,7 @@ export default function Home() {
 
       <View style={styles.chatsContainer}>
         <ScrollView
-        //   vertical
+          //   vertical
           showsVerticalScrollIndicator={false}
           style={styles.messageContainer}
         >
@@ -284,6 +284,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginTop: 28,
     padding: 16,
   },
   headerTitle: {
