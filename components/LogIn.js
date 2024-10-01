@@ -24,7 +24,7 @@ export default function LogIn() {
         email,
         password
       );
-      navigation.navigate("Onboarding");
+      navigation.navigate("Home");
     } catch (error) {
       if (error.code === "auth/invalid-credential") {
         setError(

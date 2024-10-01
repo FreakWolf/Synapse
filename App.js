@@ -5,6 +5,7 @@ import Frame1 from "./components/Frame1";
 import Onboarding from "./components/Onboarding";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
+import Home from "./components/Home";
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,11 @@ const App = () => {
           name="LogIn"
           component={LogIn}
           options={{ headerShown: false, headerLeft: null }}
+        />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>
