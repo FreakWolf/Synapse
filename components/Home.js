@@ -213,7 +213,11 @@ export default function Home() {
       <View style={styles.header}>
         <FontAwesome name="search" size={24} color="white" />
         <Text style={styles.headerTitle}>Home</Text>
-        <Image source={{ uri: "#" }} style={styles.profieImage} />
+        {/* in the above image use the backend function to show the profile of the logged in user */}
+        <Image
+          source={require("../assets/dp.png")}
+          style={styles.profieImage}
+        />
       </View>
       <ScrollView
         horizontal
@@ -223,7 +227,10 @@ export default function Home() {
         {statuses.map((name, index) => (
           <View key={index} style={styles.statusItem}>
             <View style={styles.statusImageContainer}>
-              <Image source={{ uri: "#" }} style={styles.statusImage} />
+              <Image
+                source={require("../assets/dp.png")}
+                style={styles.statusImage}
+              />
               {name === "My status" && (
                 <FontAwesome
                   name="plus-circle"
@@ -247,7 +254,10 @@ export default function Home() {
           {chats.map((chat, index) => (
             <View key={index} style={styles.chatItem}>
               <View style={styles.chatLeft}>
-                <Image source={{ uri: "#" }} style={styles.chatImage} />
+                <Image
+                  source={require("../assets/dp.png")}
+                  style={styles.chatImage}
+                />
                 <View style={styles.chatTextContent}>
                   <Text style={styles.chatName}>{chat.name}</Text>
                   <Text style={styles.chatMessage}>{chat.message}</Text>
@@ -266,7 +276,21 @@ export default function Home() {
       <View style={styles.footer}>
         {["Message", "Calls", "Contacts", "Settings"].map((item, index) => (
           <TouchableOpacity key={index} style={styles.footerItem}>
-            <FontAwesome name={item.toLowerCase()} size={24} color="gray" />
+            <FontAwesome
+              name={
+                item.toLowerCase() === "message"
+                  ? "envelope"
+                  : item.toLowerCase() === "calls"
+                  ? "phone"
+                  : item.toLowerCase() === "contacts"
+                  ? "address-book"
+                  : item.toLowerCase() === "settings"
+                  ? "gear"
+                  : item.toLowerCase()
+              }
+              size={24}
+              color="gray"
+            />
             <Text style={styles.footerText}>{item}</Text>
           </TouchableOpacity>
         ))}
@@ -293,8 +317,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   profieImage: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     borderRadius: 20,
   },
   statusContainer: {
@@ -349,8 +373,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   chatImage: {
-    width: 40,
-    height: 40,
+    width: 60,
+    height: 60,
     borderRadius: 20,
   },
   chatTextContent: {
